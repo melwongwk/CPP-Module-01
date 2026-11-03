@@ -24,31 +24,33 @@ SRCS			=	$(SRC_DIR)/main.cpp \
 					$(SRC_DIR)/newZombie.cpp \
 					$(SRC_DIR)/randomChump.cpp
 OBJS			=	$(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-
+DEPS			=	$(OBJS:.o=.d)
 # Rules
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS)
+$(NAME): $(OBJS)
 	$(SILENT)$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-	@echo "$(GREEN)[OK] $(NAME) built successfully.$(RESET)"
+	@printf "$(GREEN)[OK] $(NAME) built successfully.$(RESET)\n"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	@printf "$(CYAN)[CXX] $<$(RESET)\n"
+	$(SILENT)$(CXX) $(CXXFLAGS) -MMD -MP -I$(INC_DIR) -c $< -o $@
 
 $(OBJ_DIR):
 	$(SILENT)mkdir -p $(OBJ_DIR)
-	@echo "$(BLUE)[DIR] Created $(OBJ_DIR)/$(RESET)"
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	@echo "$(CYAN)[CXX] $<$(RESET)"
-	$(SILENT)$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $< -o $@
+	@printf "$(BLUE)[DIR] Created $(OBJ_DIR)/$(RESET)\n"
 
 clean:
-	@echo "$(RED)[CLEAN] Removing object files$(RESET)"
+	@printf "$(RED)[CLEAN] Removing object files$(RESET)\n"
 	$(SILENT)rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "$(RED)[FCLEAN] Removing $(NAME)$(RESET)"
+	@printf "$(RED)[FCLEAN] Removing $(NAME)$(RESET)\n"
 	$(SILENT)rm -f $(NAME)
 
 re: fclean all
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re

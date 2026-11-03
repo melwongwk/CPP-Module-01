@@ -2,7 +2,7 @@
 #include <string>
 #include "Zombie.hpp"
 
-std::string	Zombie::getName() const
+const std::string	Zombie::getName() const
 {
 	return (_name);
 }
