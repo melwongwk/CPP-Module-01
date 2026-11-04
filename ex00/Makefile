@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: melwong <melwong@student.42kl.edu.my>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/11/04 15:20:05 by melwong           #+#    #+#              #
+#    Updated: 2026/11/04 15:20:06 by melwong          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME			=	zombie
 CXX				=	c++
 CXXFLAGS		=	-Wall -Wextra -Werror -std=c++98
@@ -16,7 +28,7 @@ RED				=	\033[0;31m
 GREEN			=	\033[0;32m
 BLUE			=	\033[0;34m
 MAGENTA			=	\033[0;35m
-CYAN			=   \033[0;36m
+CYAN			=	\033[0;36m
 RESET			=	\033[0m
 
 SRCS			=	$(SRC_DIR)/main.cpp \
@@ -25,6 +37,7 @@ SRCS			=	$(SRC_DIR)/main.cpp \
 					$(SRC_DIR)/randomChump.cpp
 OBJS			=	$(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 DEPS			=	$(OBJS:.o=.d)
+
 # Rules
 
 all: $(NAME)
