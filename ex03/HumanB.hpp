@@ -6,7 +6,7 @@
 /*   By: melwong <melwong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:42:49 by melwong           #+#    #+#             */
-/*   Updated: 2026/11/04 16:09:35 by melwong          ###   ########.fr       */
+/*   Updated: 2026/11/04 19:53:34 by melwong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ class HumanB
 		Weapon		*_weapon;
 
 	public:
-		HumanB(std::string name);
-		const std::string	getName();
-		void				setName(std::string name);
-		Weapon				*getWeapon();
+		HumanB(const std::string &name);
+		const std::string	&getName() const;
+		void				setName(const std::string &name);
 		void				setWeapon(Weapon &weapon);
-		void				attack();
+		void				attack() const;
 };
 
 #endif

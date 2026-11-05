@@ -6,7 +6,7 @@
 /*   By: melwong <melwong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:27:53 by melwong           #+#    #+#             */
-/*   Updated: 2026/11/04 16:44:41 by melwong          ###   ########.fr       */
+/*   Updated: 2026/11/05 11:04:30 by melwong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 {
 	{
 		Weapon	club = Weapon("crude spiked club");
-		
+
 		HumanA	bob("Bob", club);
 		bob.attack();
 		club.setType("some other type of club");
@@ -26,7 +26,7 @@ int	main(void)
 	}
 	{
 		Weapon	club = Weapon("crude spiked club");
-		
+
 		HumanB	jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
@@ -34,8 +34,28 @@ int	main(void)
 		jim.attack();
 	}
 	{
-		HumanB	nobody("Nobody");
-		nobody.attack();
+		Weapon fist = Weapon("fists");
+		Weapon sword = Weapon("\"excalibur\"");
+
+		HumanA	adam("Adam", fist);
+		// adam.attack();
+		// adam.setWeapon(sword);
+		// fist.setType("\"excalibur\"");
+		adam.attack();
+	}
+	{
+		Weapon fist = Weapon("fists");
+		Weapon sword = Weapon("\"excalibur\"");
+
+		HumanB	tommy("Tommy");
+		tommy.setWeapon(fist);
+		tommy.attack();
+		tommy.setWeapon(sword);
+		tommy.attack();
+	}
+	{
+		HumanB	billy("Billy");
+		billy.attack();
 	}
 	return (0);
 }
