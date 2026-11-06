@@ -6,7 +6,7 @@
 /*   By: melwong <melwong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 16:39:16 by melwong           #+#    #+#             */
-/*   Updated: 2026/11/06 13:03:26 by melwong          ###   ########.fr       */
+/*   Updated: 2026/11/06 18:05:58 by melwong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,14 @@ void	Harl::complain(std::string level)
 {
 	typedef void	(Harl::*Handler)(void);
 
-	struct	Entry
-	{
-		std::string	name;
-		Handler		func;
-	};
+	static const std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	static const Handler		func[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	static const Entry	table[4] = {
-		{"DEBUG", &Harl::debug},
-		{"INFO", &Harl::info},
-		{"WARNING", &Harl::warning},
-		{"ERROR", &Harl::error}
-	};
-	
 	for (int i = 0; i < 4; i++)
 	{
-		if (level == table[i].name)
+		if (level == levels[i])
 		{
-			(this->*table[i].func)();
+			(this->*func[i])();
 			return ;
 		}
 	}
