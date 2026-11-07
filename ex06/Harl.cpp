@@ -6,7 +6,7 @@
 /*   By: melwong <melwong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 16:39:16 by melwong           #+#    #+#             */
-/*   Updated: 2026/11/06 17:53:42 by melwong          ###   ########.fr       */
+/*   Updated: 2026/11/07 09:42:38 by melwong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	Harl::complain(std::string level)
 			/* fallthrough */
 		case 3:
 			error();
-			/* fallthrough */
+			break ;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
