@@ -6,7 +6,7 @@
 /*   By: melwong <melwong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:27:53 by melwong           #+#    #+#             */
-/*   Updated: 2026/11/05 15:15:00 by melwong          ###   ########.fr       */
+/*   Updated: 2026/11/08 07:11:27 by melwong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ static int	sed(const std::string &filename, const std::string &s1, const std::st
 	std::string	buffer;
 	char		c;
 
-	while (file.get(c))
-		buffer += c;
+	std::getline(file, buffer, '\0');
 	if (file.bad())
 	{
 		std::cerr << "Error: cannot read '" << filename << "'" << std::endl;
